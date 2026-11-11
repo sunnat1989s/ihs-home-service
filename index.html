@@ -1,0 +1,66 @@
+<!-- Mana bu qator style.css ni ulaydi -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Asosiy kartochkalar (Grid) -->
+    <main class="grid-container">
+        <!-- 1. Molyarka va Bo'yoq -->
+        <div class="card card-orange" onclick="selectService('Molyarka va Bo\'yoq')">
+            <div class="card-badge">HOT</div>
+            <div class="card-icon">🎨</div>
+            <h3>Molyarka & Bo'yoq</h3>
+            <p>Wagner va Graco uskunasida bo'yash</p>
+        </div>
+
+        <!-- 2. Shpaklyovka -->
+        <div class="card card-purple" onclick="selectService('Shpaklyovka')">
+            <div class="card-icon">📐</div>
+            <h3>Shpaklyovka</h3>
+            <p>Sirtni mukammal tekislash</p>
+        </div>
+
+        <!-- 3. Oboy yopishtirish -->
+        <div class="card card-cyan" onclick="selectService('Oboy yopishtirish')">
+            <div class="card-icon">📜</div>
+            <h3>Oboy Xizmati</h3>
+            <p>Choklarsiz va yuqori sifatda</p>
+        </div>
+
+        <!-- 4. Kalkulyator -->
+        <div class="card card-green" onclick="selectService('Narx kalkulyatori')">
+            <div class="card-badge">NEW</div>
+            <div class="card-icon">🧮</div>
+            <h3>Kalkulyator</h3>
+            <p>Maydon bo'yicha narxni hisoblang</p>
+        </div>
+
+        <!-- 5. Portfolio (Katta kartochka) -->
+        <div class="card card-blue card-full" onclick="selectService('Portfolio')">
+            <div class="card-icon">📸</div>
+            <h3>Bajarilgan Ishlar (Portfolio)</h3>
+            <p>Oldingi ob'ektlarimiz va videolarimiz bilan tanishing</p>
+        </div>
+    </main>
+
+    <!-- Pastki tugma -->
+    <footer class="footer">
+        <button class="main-btn" onclick="sendContactRequest()">📞 Bepul konsultatsiya olish</button>
+    </footer>
+</div>
+
+<script>
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // Mini ilovani ekranga to'liq yoyish
+
+    // Agar foydalanuvchi Telegram'dan kirgan bo'lsa, ismini chiqarish
+    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        document.getElementById('user-greeting').innerText = `Salom, ${tg.initDataUnsafe.user.first_name}! 👋`;
+    }
+
+    function selectService(serviceName) {
+        tg.showAlert(`Siz "${serviceName}" bo'limini tanladingiz. Tez orada bu yerda batafsil ma'lumot ochiladi!`);
+    }
+
+    function sendContactRequest() {
+        tg.sendData("Mijoz konsultatsiya olish uchun ariza yubordi.");
+    }
+</script>
